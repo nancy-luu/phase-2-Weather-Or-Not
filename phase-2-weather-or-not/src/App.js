@@ -3,6 +3,8 @@ import MapStyles from './MapStyles';
 import Header from './components/Header';
 import SideBar from './components/SideBar';
 
+
+
 import {
     GoogleMap,
     useLoadScript,
@@ -27,6 +29,8 @@ const options = {
     zoomControl: true,
 
 }
+
+const APIKEY = "e3c1d63210fbee0969fa2f40280ef636"
 
 export default function App(){
     const {isLoaded, loadError} = useLoadScript({
