@@ -1,22 +1,14 @@
-import React, {useEffect} from "react";
+import React, {useState} from "react";
 
-function Search (){
-
-function findCity(e){
-    e.preventDefault()
-    fetch("api.openweathermap.org/data/2.5/weather?q=denver&appid=e3c1d63210fbee0969fa2f40280ef636")
-        .then((res) => res.json())
-        .then(weatherData => console.log(weatherData))
-}
-
+function Search ({handleCity, setCity}){
 
 
 
     return (
         <>
-            <form onSubmit={findCity}>
+            <form onSubmit={handleCity}>
                 <h3>Search Your Weather</h3>
-                <input type="text" name="search" placeholder="City Name..." />
+                <input onChange={(e)=> setCity(e.target.value)}type="text" name="search" placeholder="City Name..." />
                 <button className="button" type="submit">Find</button>
             </form>
         </>

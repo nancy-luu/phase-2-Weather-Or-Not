@@ -3,10 +3,12 @@ import Search from "./Search";
 import WeatherReport from "./WeatherReport";
 import FavCities from "./FavCities";
 
-export default function SideBar (){
+export default function SideBar ({handleCity, setCity}){
     return (
         <>
-            <Search className="nested" />
+            <Search handleCity={handleCity}
+            setCity={setCity}
+            className="nested" />
             <WeatherReport className="nested" />
             <FavCities className="nested" />
         </>
