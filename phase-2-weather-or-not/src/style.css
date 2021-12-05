@@ -1,0 +1,36 @@
+.header {
+    background-color: rgb(144, 206, 241)
+}
+
+.container {
+    display: flex;
+    padding: .6em;
+}
+
+.aside {
+    display: flex;
+}
+
+.main {
+    display: flex;
+    flex: 1;
+}
+
+
+.button {
+    top: 85%;
+    background-color:rgb(144, 206, 241);
+    border: none;
+    border-radius: 5px;
+    width: 5rem;
+    height: 2rem;
+    color: whitesmoke;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+    border-radius: 5px;
+    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5), 
+    7px 7px 20px 0px rgba(0,0,0,.1), 
+    4px 4px 5px 0px rgba(0,0,0,.1);
+}
