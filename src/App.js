@@ -27,7 +27,9 @@ const options = {
 
 }
 
-// const APIKEY = "e3c1d63210fbee0969fa2f40280ef636"
+// const APIKEY = ("e3c1d63210fbee0969fa2f40280ef636")
+// lag and lng api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
+//By city api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
 
 export default function App(){
 
