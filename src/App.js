@@ -2,16 +2,9 @@ import React, {useState, useEffect} from 'react';
 import MapStyles from './MapStyles';
 import Header from './components/Header';
 import SideBar from './components/SideBar';
+import {GoogleMap,useLoadScript,Marker,InfoWindow,} from "@react-google-maps/api";
 
-
-
-import {
-    GoogleMap,
-    useLoadScript,
-    // Marker,
-    // InfoWindow,
-} from "@react-google-maps/api";
-
+const testAPI =(`https://api.openweathermap.org/data/2.5/weather?q=denver&appid=e3c1d63210fbee0969fa2f40280ef636`)
 
 const libraries = ["places"]
 const mapContainerStyle = {
@@ -27,21 +20,35 @@ const options = {
 
 }
 
+    
 // const APIKEY = ("e3c1d63210fbee0969fa2f40280ef636")
-// lag and lng api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
+// lag and lng https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=e3c1d63210fbee0969fa2f40280ef636
+// ex: https://api.openweathermap.org/data/2.5/weather?lat=39.7392&lon=104.9903&appid=e3c1d63210fbee0969fa2f40280ef636
 //By city api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
 
 export default function App(){
 
-    const [lat, setLat] = useState(37.7749)
+    const [lat, setLat] = useState(40.7749)
     const [lng, setLng] = useState(122.4194)
+
+    const lanlngAPI = (`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=e3c1d63210fbee0969fa2f40280ef636`)
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition((postion) => {
             setLat(postion.coords.latitude)
             setLng(postion.coords.longitude)
-        })
+        }
+
+    )
     }, [])
+
+    
+        fetch(lanlngAPI)
+        .then((res) => res.json())
+        .then((data) => console.log(data))
+    
+   
+    
     // console.log(lat)
     // console.log(lng)
 
