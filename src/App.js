@@ -68,6 +68,7 @@ export default function App(){
         .then((weatherData) => {console.log(weatherData)})
     }
 
+   
 
     const center = {
         lat: lat,
@@ -86,6 +87,7 @@ export default function App(){
     
     return (
         <div>
+
             <Header className="header"/>
             <div class="video-background">
                 <div class="video-foreground">
@@ -115,6 +117,7 @@ export default function App(){
                     </Col>
                 </Row>
             </Container>
+
         </div>
     )
 }
