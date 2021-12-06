@@ -1,10 +1,10 @@
 import React from "react";
 
-export default function WeatherReport ({city}){
+export default function WeatherReport (){
     return (
         <>
             <form className="NewReport">
-                <div>({city})</div>
+                <div>City</div>
                 <button className="button" type="submit">Favorite</button>
                 <div>(weather info...)</div>
                 <div>(weather info...)</div>
