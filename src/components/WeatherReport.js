@@ -3,12 +3,12 @@ import React from "react";
 export default function WeatherReport (){
     return (
         <>
-            <form className="NewReport">
+            <form className="report">
                 <div>City</div>
-                <button className="button" type="submit">Favorite</button>
                 <div>(weather info...)</div>
                 <div>(weather info...)</div>
                 <div>(weather info...)</div>
+                <button className="favButton" type="submit">Favorite</button>
             </form>
         </>
     )

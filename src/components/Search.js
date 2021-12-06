@@ -60,6 +60,7 @@ import usePlacesAutocomplete, {
             //If not ready disable box
             disabled={!ready}
             placeholder="Search your location"
+            className="input"
           />
           <ComboboxPopover>
             <ComboboxList>
