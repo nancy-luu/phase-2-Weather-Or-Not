@@ -44,17 +44,18 @@ export default function App(){
     // const [weather, setWeather] = useState({})
 
     // const cityAPI = (`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=e3c1d63210fbee0969fa2f40280ef636`)
-    let lanlngAPI = (`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=e3c1d63210fbee0969fa2f40280ef636`)
+    const lanlngAPI = (`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=e3c1d63210fbee0969fa2f40280ef636`)
     useEffect(() => {
         navigator.geolocation.getCurrentPosition((postion) => {
             setLat(postion.coords.latitude)
             setLng(postion.coords.longitude)
             setZoom(11.5)
+            handleCity(lat, lng)
         }
     )
     }, [])
 
-    function handleCity({lat,lng, lanlngAPI}){
+    function handleCity({lat,lng}){
         setLng(lng)
         setLat(lat)
         fetch(lanlngAPI)
@@ -84,7 +85,7 @@ export default function App(){
             <Header />
             <section >
                 <SideBar 
-                lanlngAPI={lanlngAPI}
+                
                 lat={lat}
                 lng={lng}
                 city={city}

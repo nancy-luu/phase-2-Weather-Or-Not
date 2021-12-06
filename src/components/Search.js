@@ -13,7 +13,7 @@ import usePlacesAutocomplete, {
   } from "@reach/combobox";
   import "@reach/combobox/styles.css"
 
-  function Search({lat,lng, handleCity,lanlngAPI}) {
+  function Search({lat,lng, handleCity}) {
     const {
         //is this ready to go?
       ready,
@@ -46,7 +46,8 @@ import usePlacesAutocomplete, {
                 //this pulls the lat, lng from getGeocode
                 const {lat, lng} = await getLatLng(results[0])
                 //sends infor back to handleCity
-                handleCity({lat,lng, lanlngAPI})
+                handleCity({lat,lng})
+                setValue("")
             }catch(error){
                 console.log("error")
             }
@@ -64,8 +65,8 @@ import usePlacesAutocomplete, {
             <ComboboxList>
               {status === "OK" &&
               //maps over all suggestions and returns id and description
-                data.map(({ id, description }) => (
-                  <ComboboxOption key={id} value={description} />
+                data.map(({ description }) => (
+                  <ComboboxOption key={Math.random()} value={description} />
                 ))}
             </ComboboxList>
           </ComboboxPopover>
