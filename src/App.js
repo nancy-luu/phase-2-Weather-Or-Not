@@ -44,7 +44,7 @@ export default function App(){
     // const [weather, setWeather] = useState({})
 
     // const cityAPI = (`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=e3c1d63210fbee0969fa2f40280ef636`)
-    const lanlngAPI = (`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=e3c1d63210fbee0969fa2f40280ef636`)
+    let lanlngAPI = (`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=e3c1d63210fbee0969fa2f40280ef636`)
     useEffect(() => {
         navigator.geolocation.getCurrentPosition((postion) => {
             setLat(postion.coords.latitude)
@@ -54,23 +54,15 @@ export default function App(){
     )
     }, [])
 
-    function handleCity({lat,lng}){
-        
+    function handleCity({lat,lng, lanlngAPI}){
+        setLng(lng)
+        setLat(lat)
         fetch(lanlngAPI)
         .then((res) => res.json())
-        .then((weatherData) =>  {
-            console.log(weatherData)
-            // setWeather({...weather, data})
-            setLng(lng)
-            setLat(lat)
-            makeCard(weatherData)
-            })
+        .then((weatherData) => {console.log(weatherData)})
     }
 
-    function makeCard(weatherData){
-        console.log(weatherData)
-    }
-
+   
 
     const center = {
         lat: lat,
@@ -92,6 +84,7 @@ export default function App(){
             <Header />
             <section >
                 <SideBar 
+                lanlngAPI={lanlngAPI}
                 lat={lat}
                 lng={lng}
                 city={city}
