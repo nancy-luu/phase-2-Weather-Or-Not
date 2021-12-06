@@ -2,9 +2,13 @@ import React, {useState, useEffect} from 'react';
 import MapStyles from './MapStyles';
 import Header from './components/Header';
 import SideBar from './components/SideBar';
-import {GoogleMap,useLoadScript,
-    // Marker,InfoWindow
+import { GoogleMap,
+    useLoadScript,
+    // Marker,
+    // InfoWindow
 } from "@react-google-maps/api";
+
+
 
 // const testAPI =(`https://api.openweathermap.org/data/2.5/weather?q=denver&appid=e3c1d63210fbee0969fa2f40280ef636`)
 
@@ -24,7 +28,7 @@ const options = {
 
 // const lanlngAPI = (`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=e3c1d63210fbee0969fa2f40280ef636`)
 // const APIKEY = ("e3c1d63210fbee0969fa2f40280ef636")
-// lag and lng https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=e3c1d63210fbee0969fa2f40280ef636
+// const  https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=e3c1d63210fbee0969fa2f40280ef636
 // ex: https://api.openweathermap.org/data/2.5/weather?lat=39.7392&lon=104.9903&appid=e3c1d63210fbee0969fa2f40280ef636
 //By city https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
 
@@ -34,35 +38,43 @@ export default function App(){
 
     const [libraries] = useState(["places"])
     const [lat, setLat] = useState(39.50)
-    const [lon, setLon] = useState(-98.35)
+    const [lng, setLng] = useState(-98.35)
     const [city, setCity] = useState("")
     const [zoom, setZoom] = useState(4.3)
-    const [weather, setWeather] = useState({coord: {lon: "", lat: ""}})
+    // const [weather, setWeather] = useState({})
 
-    const cityAPI = (`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=e3c1d63210fbee0969fa2f40280ef636`)
-
+    // const cityAPI = (`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=e3c1d63210fbee0969fa2f40280ef636`)
+    const lanlngAPI = (`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=e3c1d63210fbee0969fa2f40280ef636`)
     useEffect(() => {
         navigator.geolocation.getCurrentPosition((postion) => {
             setLat(postion.coords.latitude)
-            setLon(postion.coords.longitude)
+            setLng(postion.coords.longitude)
             setZoom(11.5)
         }
     )
     }, [])
 
-    function handleCity(e){
-        e.preventDefault()
-        fetch(cityAPI)
+    function handleCity({lat,lng}){
+        
+        fetch(lanlngAPI)
         .then((res) => res.json())
-        .then((data) =>  {
-            setLon(data.coord.lon)
-            setLat(data.coord.lat)
+        .then((weatherData) =>  {
+            console.log(weatherData)
+            // setWeather({...weather, data})
+            setLng(lng)
+            setLat(lat)
+            makeCard(weatherData)
             })
     }
 
+    function makeCard(weatherData){
+        console.log(weatherData)
+    }
+
+
     const center = {
         lat: lat,
-        lng: lon,
+        lng: lng,
     }
 
     const {isLoaded, loadError} = useLoadScript({
@@ -73,12 +85,15 @@ export default function App(){
     if (loadError) return "Error Loading Map";
     if (!isLoaded) return "Loading Maps..";
 
+
     
     return (
         <div>
             <Header />
             <section >
                 <SideBar 
+                lat={lat}
+                lng={lng}
                 city={city}
                 handleCity={handleCity}
                 setCity={setCity}
