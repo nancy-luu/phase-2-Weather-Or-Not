@@ -13,7 +13,7 @@ import usePlacesAutocomplete, {
   } from "@reach/combobox";
   import "@reach/combobox/styles.css"
 
-  function Search({lat,lng, handleCity}) {
+  function Search({lat,lng, handleCity,lanlngAPI}) {
     const {
         //is this ready to go?
       ready,
@@ -36,13 +36,17 @@ import usePlacesAutocomplete, {
     return (
       <div className="search">
         <Combobox onSelect={async (address) => {
+          //sets valuie to whatever you click on
+            setValue(address, false)
+            //then clears all other selctions
+            clearSuggestions()
             //Will try to run this. If it can not it will give an error
             try{
                 const results = await getGeocode({address});
                 //this pulls the lat, lng from getGeocode
                 const {lat, lng} = await getLatLng(results[0])
-                handleCity({lat,lng})
-                console.log(lat, lng)
+                //sends infor back to handleCity
+                handleCity({lat,lng, lanlngAPI})
             }catch(error){
                 console.log("error")
             }
