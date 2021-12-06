@@ -28,45 +28,42 @@ const options = {
 // ex: https://api.openweathermap.org/data/2.5/weather?lat=39.7392&lon=104.9903&appid=e3c1d63210fbee0969fa2f40280ef636
 //By city https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
 
+
+
 export default function App(){
 
     const [libraries] = useState(["places"])
-    const [lat, setLat] = useState(37.7749)
-    const [lng, setLng] = useState(122.4194)
+    const [lat, setLat] = useState(39.50)
+    const [lon, setLon] = useState(-98.35)
     const [city, setCity] = useState("")
-    const [weather, setWeather] = useState("")
+    const [zoom, setZoom] = useState(4.3)
+    const [weather, setWeather] = useState({coord: {lon: "", lat: ""}})
 
+    const cityAPI = (`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=e3c1d63210fbee0969fa2f40280ef636`)
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition((postion) => {
             setLat(postion.coords.latitude)
-            setLng(postion.coords.longitude)
+            setLon(postion.coords.longitude)
+            setZoom(11.5)
         }
     )
     }, [])
 
     function handleCity(e){
         e.preventDefault()
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=e3c1d63210fbee0969fa2f40280ef636`)
+        fetch(cityAPI)
         .then((res) => res.json())
-        .then((data) => setWeather(data))
-        console.log(weather)
-        // console.log(weather.coord.lon)
-        // console.log(weather.coord.lat)
-
-        // setLng(weather.coord.lon)
-        // setLat(weather.coord.lat)
-        
-        // console.log(weather)     
-        // console.log(city)
+        .then((data) =>  {
+            setLon(data.coord.lon)
+            setLat(data.coord.lat)
+            })
     }
-    
-  
+
     const center = {
         lat: lat,
-        lng: lng,
+        lng: lon,
     }
-
 
     const {isLoaded, loadError} = useLoadScript({
         googleMapsApiKey: "AIzaSyC0cTA0LHGLFgzM3dg1MW0t07uNkrPr83g",
@@ -82,12 +79,13 @@ export default function App(){
             <Header />
             <section >
                 <SideBar 
+                city={city}
                 handleCity={handleCity}
                 setCity={setCity}
                 class="main"/>
                 <GoogleMap 
                     mapContainerStyle={mapContainerStyle}
-                    zoom={10}
+                    zoom={zoom}
                     center={center}
                     options={options}
                 ></GoogleMap>
