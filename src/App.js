@@ -52,6 +52,7 @@ export default function App(){
     function handleCity({lat,lng}){
         setLng(lng)
         setLat(lat)
+        setZoom(11.5)
     }
 
     useEffect(() =>{
@@ -60,7 +61,11 @@ export default function App(){
         .then((weatherData) => setWeather(weatherData))
     }, [lat])
 
+<<<<<<< HEAD
     // console.log(weather)
+=======
+   
+>>>>>>> f9138380e159ebb0aac27542f9b498769582071e
 
    
 
@@ -92,6 +97,7 @@ export default function App(){
                 <Row >
                     <Col>
                         <SideBar 
+                        weather={weather}
                         lanlngAPI={lanlngAPI}
                         lat={lat}
                         lng={lng}
