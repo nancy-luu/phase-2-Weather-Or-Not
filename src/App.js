@@ -56,6 +56,8 @@ export default function App(){
         .then((weatherData) => setWeather(weatherData))
     }, [lat])
 
+
+  
     const center = {
         lat: lat,
         lng: lng,
@@ -90,6 +92,7 @@ export default function App(){
                         city={city}
                         handleCity={handleCity}
                         setCity={setCity}
+                        weather={weather}
                         className="main"/>
                     </Col>
                     <Col className="map">

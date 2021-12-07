@@ -4,8 +4,9 @@ import { Container,
 } from 'react-bootstrap' ;
 
 
+
 export default function WeatherReport ({weather}){
-// console.log(weather.main.temp)
+
     function minmaxTemp(min, max){
         return(
             <p>
