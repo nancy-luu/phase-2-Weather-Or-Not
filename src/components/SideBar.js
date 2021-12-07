@@ -10,15 +10,14 @@ export default function SideBar ({ weather, handleCity, setCity, lat, lng }){
 
             <Container className="SideBar">
                 <Search 
-                weather={weather}
                 lat={lat}
                 lng={lng}
                 handleCity={handleCity}
                 setCity={setCity}
                 className="nested" />
                 <WeatherReport 
-                className="nested" />
-                weather={weather}
+                className="nested" 
+                weather={weather} />
                 <FavCities className="nested" />
             </Container>
 

@@ -6,7 +6,7 @@ import "weather-icons/css/weather-icons.css";
 import { Container, Row, Col } from 'react-bootstrap' ;
 import { GoogleMap,
     useLoadScript,
-    Marker,
+    // Marker,
     // InfoWindow
 } from "@react-google-maps/api";
 
@@ -34,7 +34,7 @@ export default function App(){
     const [lng, setLng] = useState(-98.35)
     const [city, setCity] = useState("")
     const [zoom, setZoom] = useState(4.3)
-    const [weather, setWeather] = useState({defaultWeather})
+    const [weather, setWeather] = useState(defaultWeather)
 
     const lanlngAPI = (`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=e3c1d63210fbee0969fa2f40280ef636`)
     
