@@ -14,7 +14,6 @@ export default function WeatherReport ({ weather }){
         )
     }
 
-    
     return (
         <>
             <Container className="report">

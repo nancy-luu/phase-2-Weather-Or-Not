@@ -20,7 +20,6 @@ export default function SideBar ({ weather, handleCity, setCity, lat, lng }){
                 weather={weather} />
                 <FavCities className="nested" />
             </Container>
-
         </>
     )
 }
