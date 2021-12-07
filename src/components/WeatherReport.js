@@ -2,8 +2,9 @@ import React from "react";
 import { Container, Row, Col } from 'react-bootstrap' ;
 
 
+
 export default function WeatherReport ({weather}){
-// console.log(weather.main.temp)
+
     function minmaxTemp(min, max){
         return(
             <h3>

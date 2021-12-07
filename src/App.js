@@ -60,6 +60,8 @@ export default function App(){
         console.log(zoom)
     }, [lat])
 
+
+  
     const center = {
         lat: lat,
         lng: lng,
@@ -94,6 +96,7 @@ export default function App(){
                         city={city}
                         handleCity={handleCity}
                         setCity={setCity}
+                        weather={weather}
                         className="main"/>
                     </Col>
                     <Col className="map">
