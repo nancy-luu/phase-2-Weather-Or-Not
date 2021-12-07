@@ -28,9 +28,7 @@ const defaultWeather = {
 }
 // const APIKEY = ("e3c1d63210fbee0969fa2f40280ef636")
 
-
 export default function App() {
-
     const [libraries] = useState(["places"])
     const [lat, setLat] = useState(39.50)
     const [lng, setLng] = useState(-98.35)
@@ -39,9 +37,10 @@ export default function App() {
     const [city, setCity] = useState("")
     const [zoom, setZoom] = useState(4.3)
     const [weather, setWeather] = useState(defaultWeather)
-
     const lanlngAPI = (`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=e3c1d63210fbee0969fa2f40280ef636`)
 
+    
+    
     useEffect(() => {
         navigator.geolocation.getCurrentPosition((postion) => {
             setLat(postion.coords.latitude)
@@ -49,9 +48,13 @@ export default function App() {
             setYourLat(postion.coords.latitude)
             setYourLng(postion.coords.longitude)
             setZoom(11)
-            console.log(lat)
-            console.log(lng)
         })}, [])
+
+        useEffect(() => {
+            fetch(lanlngAPI)
+            .then((res) => res.json())
+            .then((weatherData) => setWeather(weatherData))
+        }, [lat])
 
     function curLocation() {
             setLat(yourLat)
@@ -62,13 +65,6 @@ export default function App() {
         setLng(lng)
         setLat(lat)
     }
-    
-
-    useEffect(() => {
-        fetch(lanlngAPI)
-        .then((res) => res.json())
-        .then((weatherData) => setWeather(weatherData))
-    }, [lat])
 
     const center = {
         lat: lat,
@@ -85,7 +81,6 @@ export default function App() {
 
     return (
         <div>
-
             <Header className="header" />
             <div className="video-background">
                 <div className="video-foreground">

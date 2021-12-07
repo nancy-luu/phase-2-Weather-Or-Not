@@ -28,9 +28,10 @@ export default function WeatherReport ({ weather }){
                 console.log("RAIN")
                 return "wi-storm-showers";
             case weatherId >= 600 && weatherId <=622:
-                return "wi-snow";
+                return "wi-snow"; 
             case weatherId >= 701 && weatherId <=781:
-                return "wi-fog";
+                return "wi-fog";  
+
             case weatherId === 800:
                 return "wi-day-sunny";
             case weatherId >= 800 && weatherId <=804:
