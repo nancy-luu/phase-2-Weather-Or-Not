@@ -22,12 +22,10 @@ const options = {
 }
 
 
-<<<<<<< HEAD
-=======
-// const lanlngAPI = (`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=e3c1d63210fbee0969fa2f40280ef636`)
->>>>>>> 313bc5e5 (useState Weather change)
 // const APIKEY = ("e3c1d63210fbee0969fa2f40280ef636")
 
+const defaultWeather = {main: {temp: "", temp_max: "", temp_min: ""},
+weather: [{0: {description:"", id: ""}}] }
 
 export default function App(){
 
@@ -36,14 +34,8 @@ export default function App(){
     const [lng, setLng] = useState(-98.35)
     const [city, setCity] = useState("")
     const [zoom, setZoom] = useState(4.3)
-    const [weather, setWeather] = useState({})
+    const [weather, setWeather] = useState({defaultWeather})
 
-<<<<<<< HEAD
-=======
-
-    // const cityAPI = (`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=e3c1d63210fbee0969fa2f40280ef636`)
-    
->>>>>>> 313bc5e5 (useState Weather change)
     const lanlngAPI = (`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=e3c1d63210fbee0969fa2f40280ef636`)
     
     useEffect(() => {
@@ -69,12 +61,6 @@ export default function App(){
         setZoom(11.5)
         console.log(zoom)
     }, [lat])
-
-<<<<<<< HEAD
-=======
-
->>>>>>> 313bc5e5 (useState Weather change)
-
   
     const center = {
         lat: lat,
