@@ -172,3 +172,86 @@ h4 {
 @media all and (max-width: 500px) {
 .vid-info .acronym { display: none; }
 }
+
+
+
+/* BUTTON FORMATTING */
+
+.favButton {
+  width: 100px;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  height: 40px;
+  text-align:center;
+  border: none;
+  background-size: 300% 100%;
+  border-radius: 50px;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+  margin-top: 200px;
+  margin-left: 160px;
+  margin-bottom: 5px;
+  }
+  
+.favButton:hover {
+  background-position: 100% 0;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.favButton:focus {
+  outline: none;
+}
+  
+.favButton {
+  background-image: linear-gradient(
+  to right,
+  #25aae1,
+  #4481eb,
+  #04befe,
+  #3f86ed
+  );
+  box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
+}
+
+.yourLocation {
+  width: 80px;
+  height: 60px;
+  font-size: 40px;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  text-align:center;
+  border: none;
+  background-size: 300% 100%;
+  border-radius: 50px;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+  }
+  
+.yourLocation:hover {
+  background-position: 100% 0;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.yourLocation:focus {
+  outline: none;
+}
+  
+.yourLocation {
+  background-image: linear-gradient(
+  to right,
+  #25aae1,
+  #4481eb,
+  #04befe,
+  #3f86ed
+  );
+  box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
+}
