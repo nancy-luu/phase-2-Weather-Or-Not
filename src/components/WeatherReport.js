@@ -3,9 +3,7 @@ import { Container,
     // Row, Col 
 } from 'react-bootstrap' ;
 
-
-
-export default function WeatherReport ({weather}){
+export default function WeatherReport ({ weather }){
 
     function minmaxTemp(min, max){
         return(
@@ -16,8 +14,6 @@ export default function WeatherReport ({weather}){
         )
     }
     
-
-
     return (
         <>
             <Container className="report">
