@@ -69,12 +69,15 @@ h4 {
 
 .weatherIcon {
   text-align: center;
+  margin-top: 50px;
+
 }
 
 
 .weatherDegree {
   color: black;
   text-align: center;
+  margin-top: 50px;
 }
 
 .weatherMaxMin {

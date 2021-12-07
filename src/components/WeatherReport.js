@@ -2,9 +2,14 @@ import React from "react";
 import { Container, Row, Col } from 'react-bootstrap' ;
 
 
+<<<<<<< HEAD
 
 export default function WeatherReport ({weather}){
 
+=======
+export default function WeatherReport (){
+
+>>>>>>> 313bc5e5 (useState Weather change)
     function minmaxTemp(min, max){
         return(
             <h3>
@@ -15,7 +20,6 @@ export default function WeatherReport ({weather}){
     }
     
 
-
     return (
         <>
             <Container className="report">
@@ -23,9 +27,9 @@ export default function WeatherReport ({weather}){
                 <h5 className="weatherIcon">
                     <i className="wi wi-day-sunny display-1"></i>
                 </h5>
-                <h1 className="weatherDegree">25&deg;</h1>
+                <h1 className="weatherDegree"></h1>
                 <h4 className="weatherMaxMin">{minmaxTemp(24, 19)}</h4>
-                <h4 className="weatherDescription">Sunny</h4>
+                <h4 className="weatherDescription"></h4>
                 <button className="favButton" type="submit">Favorite</button>
             </Container>
         </>
