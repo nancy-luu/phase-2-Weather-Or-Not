@@ -2,9 +2,7 @@ import React, {useState, useEffect} from 'react';
 import MapStyles from './MapStyles';
 import Header from './components/Header';
 import SideBar from './components/SideBar';
-
-
-
+import "weather-icons/css/weather-icons.css";
 
 import { Container, Row, Col } from 'react-bootstrap' ;
 
@@ -83,15 +81,14 @@ export default function App(){
     if (!isLoaded) return "Loading Maps..";
 
 
-    
     return (
         <div>
             <Header className="header"/>
-            <div class="video-background">
-                <div class="video-foreground">
-                    <iframe src="https://www.youtube.com/embed/Y8ACyHYsb6Q?controls=0&showinfo=0&rel=0&autoplay=1&mute=1&loop=1&playlist=Y8ACyHYsb6Q" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+            <div className="video-background">
+                <div className="video-foreground">
+                    <iframe src="https://www.youtube.com/embed/Y8ACyHYsb6Q?controls=0&showinfo=0&rel=0&autoplay=1&mute=1&loop=1&playlist=Y8ACyHYsb6Q" frameBorder="0" allowFullScreen allow="autoplay"></iframe>
                 </div>
-                <div class="video-layer"></div>
+                <div className="video-layer"></div>
             </div>
             <Container >
                 <Row >
