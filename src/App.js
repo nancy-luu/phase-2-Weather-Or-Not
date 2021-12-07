@@ -25,8 +25,7 @@ const defaultWeather = {main: {temp: "", temp_max: "", temp_min: ""},
 weather: [{0: {description:"", id: ""}}] }
 // const APIKEY = ("e3c1d63210fbee0969fa2f40280ef636")
 
-const defaultWeather = {main: {temp: "", temp_max: "", temp_min: ""},
-weather: [{0: {description:"", id: ""}}] }
+
 
 export default function App(){
 
@@ -35,11 +34,7 @@ export default function App(){
     const [lng, setLng] = useState(-98.35)
     const [city, setCity] = useState("")
     const [zoom, setZoom] = useState(4.3)
-<<<<<<< HEAD
     const [weather, setWeather] = useState(defaultWeather)
-=======
-    const [weather, setWeather] = useState({defaultWeather})
->>>>>>> 7c220121121316943c0841ccf8e5d8997388b05e
 
     const lanlngAPI = (`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=e3c1d63210fbee0969fa2f40280ef636`)
     
