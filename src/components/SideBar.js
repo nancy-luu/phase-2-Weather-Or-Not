@@ -18,10 +18,8 @@ export default function SideBar ({ weather, handleCity, setCity, lat, lng }){
                 <WeatherReport 
                 className="nested" 
                 weather={weather}/>
-                
                 <FavCities className="nested" />
             </Container>
-
         </>
     )
 }

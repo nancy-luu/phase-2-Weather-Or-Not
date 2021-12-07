@@ -13,7 +13,8 @@ export default function WeatherReport ({ weather }){
             </p>
         )
     }
-    
+    console.log(weather.name)
+    console.log(weather.main.temp)
     return (
         <>
             <Container className="report">
