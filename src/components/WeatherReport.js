@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col } from 'react-bootstrap' ;
 
 
-export default function WeatherReport (){
+export default function WeatherReport ( ){
 
     function minmaxTemp(min, max){
         return(
@@ -18,7 +18,7 @@ export default function WeatherReport (){
     return (
         <>
             <Container className="report">
-                <h2>London</h2>
+                <h2>San Francisco</h2>
                 <h5 className="weatherIcon">
                     <i className="wi wi-day-sunny display-1"></i>
                 </h5>

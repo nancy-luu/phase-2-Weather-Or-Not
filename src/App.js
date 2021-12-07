@@ -60,7 +60,7 @@ export default function App(){
         .then((weatherData) => setWeather(weatherData))
     }, [lat])
 
-    console.log(weather)
+    // console.log(weather)
 
    
 
@@ -98,6 +98,7 @@ export default function App(){
                         city={city}
                         handleCity={handleCity}
                         setCity={setCity}
+                        weather={weather}
                         className="main"/>
                     </Col>
                     <Col className="map">
