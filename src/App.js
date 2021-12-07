@@ -104,6 +104,7 @@ export default function App(){
                                 setLng(event.latLng.lng())
                             }}>
                         </GoogleMap>
+                        <button className="yourLocation" type="submit">📍</button>
                     </Col>
                 </Row>
             </Container>
