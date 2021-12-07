@@ -23,8 +23,8 @@ const options = {
 }
 
 const defaultWeather = {
-    main: { temp: "", temp_max: "", temp_min: "" },
-    weather: [{ 0: { description: "", id: "" } }]
+    main: { temp: "", humidity: "", temp_max: "", temp_min: "" },
+    weather: [{ 0: { description: "", id: "" } },], wind: {speed: ""}
 }
 // const APIKEY = ("e3c1d63210fbee0969fa2f40280ef636")
 
@@ -56,7 +56,6 @@ export default function App() {
     function curLocation() {
             setLat(yourLat)
             setLng(yourLng)
-
     }
 
     function handleCity({ lat, lng }) {
@@ -109,6 +108,7 @@ export default function App() {
                     </Col>
                     <Col className="map">
                         <GoogleMap
+                            className="googleMap"
                             mapContainerStyle={mapContainerStyle}
                             zoom={zoom}
                             center={center}
@@ -118,7 +118,7 @@ export default function App() {
                                 setLng(event.latLng.lng())
                             }}>
                         </GoogleMap>
-                        <button id="yourLocation" className="yourLocation" type="submit"
+                        <button className="yourLocation" type="submit"
                         onClick={(e) => {
                             e.stopPropagation()
                             curLocation()}}

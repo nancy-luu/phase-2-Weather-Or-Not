@@ -2,23 +2,28 @@ import React from "react";
 import Search from "./Search";
 import WeatherReport from "./WeatherReport";
 import FavCities from "./FavCities";
-import { Container } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
 export default function SideBar ({ weather, handleCity, setCity, lat, lng }){
     return (
         <>
-
-            <Container className="SideBar">
-                <Search 
-                lat={lat}
-                lng={lng}
-                handleCity={handleCity}
-                setCity={setCity}
-                className="nested" />
-                <WeatherReport 
-                className="nested" 
-                weather={weather} />
-                <FavCities className="nested" />
+            <Container>
+                <Row>
+                    <Col>
+                        <Search 
+                        lat={lat}
+                        lng={lng}
+                        handleCity={handleCity}
+                        setCity={setCity}
+                        className="search" />
+                    </Col>
+                    <Col>
+                        <FavCities className="favCities" />
+                    </Col>
+                </Row>
+            </Container>
+            <Container className="weatherReport">
+                <WeatherReport weather={weather} />
             </Container>
         </>
     )
