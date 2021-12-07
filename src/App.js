@@ -6,7 +6,7 @@ import "weather-icons/css/weather-icons.css";
 import { Container, Row, Col } from 'react-bootstrap' ;
 import { GoogleMap,
     useLoadScript,
-    // Marker,
+    Marker,
     // InfoWindow
 } from "@react-google-maps/api";
 
@@ -21,11 +21,9 @@ const options = {
     zoomControl: true,
 }
 
-// const lanlngAPI = (`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=e3c1d63210fbee0969fa2f40280ef636`)
+
 // const APIKEY = ("e3c1d63210fbee0969fa2f40280ef636")
-// const  https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=e3c1d63210fbee0969fa2f40280ef636
-// ex: https://api.openweathermap.org/data/2.5/weather?lat=39.7392&lon=104.9903&appid=e3c1d63210fbee0969fa2f40280ef636
-//By city https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
+
 
 export default function App(){
 
@@ -36,34 +34,31 @@ export default function App(){
     const [zoom, setZoom] = useState(4.3)
     const [weather, setWeather] = useState({})
 
-    // const cityAPI = (`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=e3c1d63210fbee0969fa2f40280ef636`)
-    
     const lanlngAPI = (`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=e3c1d63210fbee0969fa2f40280ef636`)
     
     useEffect(() => {
         navigator.geolocation.getCurrentPosition((postion) => {
             setLat(postion.coords.latitude)
             setLng(postion.coords.longitude)
-            setZoom(11.5)
         }
     )
     }, [])
 
+    console.log(weather)
+
+
     function handleCity({lat,lng}){
         setLng(lng)
         setLat(lat)
-        setZoom(11.5)
     }
 
     useEffect(() =>{
         fetch(lanlngAPI)
         .then((res) => res.json())
         .then((weatherData) => setWeather(weatherData))
+        setZoom(11.5)
+        console.log(zoom)
     }, [lat])
-
-   
-
-   
 
     const center = {
         lat: lat,
@@ -77,7 +72,6 @@ export default function App(){
 
     if (loadError) return "Error Loading Map";
     if (!isLoaded) return "Loading Maps..";
-
 
     return (
         <div>
@@ -108,7 +102,11 @@ export default function App(){
                             zoom={zoom}
                             center={center}
                             options={options}
-                        ></GoogleMap>
+                            onClick={(event) => {
+                                setLat(event.latLng.lat()) 
+                                setLng(event.latLng.lng())
+                            }}>
+                        </GoogleMap>
                     </Col>
                 </Row>
             </Container>
