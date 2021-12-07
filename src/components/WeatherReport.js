@@ -4,6 +4,7 @@ import { Container,
 } from 'react-bootstrap' ;
 
 export default function WeatherReport ({ weather }){
+    
 
     function minmaxTemp(max, min){
         return(
@@ -14,12 +15,46 @@ export default function WeatherReport ({ weather }){
         )
     }
 
+    const weatherId = weather.weather[0].id
+
+    function getWeatherIcon(weatherId) {
+        switch(true){
+            case weatherId >= 200 && weatherId <=232:
+                return "wi-thunderstorm";
+                break;
+            case weatherId >= 300 && weatherId <=321:
+                return "wi-sleet";
+                break;
+            case weatherId >= 500 && weatherId <=531:
+                console.log("RAIN")
+                return "wi-storm-showers";
+                break;
+            case weatherId >= 600 && weatherId <=622:
+                return "wi-snow";
+                break;
+            case weatherId >= 701 && weatherId <=781:
+                return "wi-fog";
+                break;
+            case weatherId === 800:
+                return "wi-day-sunny";
+                break;
+            case weatherId >= 800 && weatherId <=804:
+                return "wi-day-fog";
+                break;
+            default:
+                return "wi-day-fog";
+        }
+    }
+
+    // console.log(weather)
+    // console.log(weatherId)
+    
     return (
         <>
             <Container className="report">
                 <h2>{weather.name}</h2>
                 <h5 className="weatherIcon">
-                    <i className="wi wi-day-sunny display-1"></i>
+                    <i className={`wi ${getWeatherIcon(weatherId)} display-1`} />
                 </h5>
                 <h1 className="weatherDegree">{Math.round(((weather.main.temp)-273.15)*9/5+32)}&deg;</h1>
                 <h4 className="weatherMaxMin">{minmaxTemp(weather.main.temp_max, weather.main.temp_min)}</h4>
@@ -29,3 +64,4 @@ export default function WeatherReport ({ weather }){
         </>
     )
 }
+
