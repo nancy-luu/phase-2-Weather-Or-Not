@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import MapStyles from './MapStyles';
 import Header from './components/Header';
 import SideBar from './components/SideBar';
+import "weather-icons/css/weather-icons.css";
 import { Container, Row, Col } from 'react-bootstrap' ;
 import { GoogleMap,
     useLoadScript,
@@ -77,7 +78,6 @@ export default function App(){
     if (!isLoaded) return "Loading Maps..";
 
 
-    
     return (
         <div>
 
