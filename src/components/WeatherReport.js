@@ -5,6 +5,7 @@ import { Container,
 
 export default function WeatherReport ({ weather }){
     
+    console.log(weather)
 
     function minmaxTemp(max, min){
         return(
@@ -21,26 +22,19 @@ export default function WeatherReport ({ weather }){
         switch(true){
             case weatherId >= 200 && weatherId <=232:
                 return "wi-thunderstorm";
-                break;
             case weatherId >= 300 && weatherId <=321:
                 return "wi-sleet";
-                break;
             case weatherId >= 500 && weatherId <=531:
                 console.log("RAIN")
                 return "wi-storm-showers";
-                break;
             case weatherId >= 600 && weatherId <=622:
-                return "wi-snow";
-                break;
+                return "wi-snow"; 
             case weatherId >= 701 && weatherId <=781:
-                return "wi-fog";
-                break;
+                return "wi-fog";  
             case weatherId === 800:
                 return "wi-day-sunny";
-                break;
             case weatherId >= 800 && weatherId <=804:
                 return "wi-day-fog";
-                break;
             default:
                 return "wi-day-fog";
         }
