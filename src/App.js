@@ -37,6 +37,8 @@ export default function App() {
     const [city, setCity] = useState("")
     const [zoom, setZoom] = useState(4.3)
     const [weather, setWeather] = useState(defaultWeather)
+    const [favCity, setFavCity] = useState({})
+
     const lanlngAPI = (`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=e3c1d63210fbee0969fa2f40280ef636`)
 
     
@@ -66,6 +68,19 @@ export default function App() {
         setLat(lat)
     }
 
+    function handleClick(event) {
+        setFavCity({weather})
+        // console.log({setFavCity})
+    }
+    
+    
+
+    useEffect(() => {
+        fetch(lanlngAPI)
+        .then((res) => res.json())
+        .then((weatherData) => setWeather(weatherData))
+    }, [lat])
+
     const center = {
         lat: lat,
         lng: lng,
@@ -88,9 +103,8 @@ export default function App() {
                 </div>
                 <div className="video-layer"></div>
             </div>
-            <Container >
                 <Row >
-                    <Col>
+                    <Col className="sideBar">
                         <SideBar
                             weather={weather}
                             lanlngAPI={lanlngAPI}
@@ -99,6 +113,7 @@ export default function App() {
                             city={city}
                             handleCity={handleCity}
                             setCity={setCity}
+                            handleClick={handleClick}
                             className="main" />
                     </Col>
                     <Col className="map">
@@ -120,7 +135,6 @@ export default function App() {
                          >📍</button>
                     </Col>
                 </Row>
-            </Container>
         </div>
     )
 }

@@ -23,7 +23,6 @@ h4 {
   font-size: 4em
 }
 
-
 .mainContainer {
   display: flex;
   text-align: center
@@ -36,15 +35,18 @@ h4 {
   height: 40px;
   border:none;
   margin-bottom: 5px;
-  width: 485px;
+  width: 104%;
 }
 
 .report {
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  padding-bottom: 50px;
   background-color: rgba(255, 255, 255, 0.747);
   border-radius: 5px;
   color: black;
-  height: 200px;
-  padding-bottom: 520px
 }
 
 
@@ -52,29 +54,28 @@ h4 {
   border-color: rgb(255, 255, 255);
   background-color: rgba(255, 255, 255, 0.747);
   border-radius: 5px;
-  height: 40px;
   border:none;
-  margin-left: -20px;
-  margin-bottom: 5px;
+  height: 40px;
+  width: 100%;
 }
 
 .map {
   position: relative;
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.349);
-  padding-top: 15px;
-  padding-right: 5px;
-  padding-left: 5px;
-}
-
-.googleMap {
-  position: absolute;
+  height: 100%;
+  width: 50%;
 }
 
 
 .weatherIcon {
   text-align: center;
   margin-top: 50px;
+}
+
+.cityName {
+  text-align: center;
+  font-size: 3.5em;
 }
 
 
@@ -152,6 +153,7 @@ h4 {
 /* BUTTON FORMATTING */
 
 .favButton {
+  position: absolute;
   width: 100px;
   font-size: 16px;
   font-weight: 600;
@@ -165,9 +167,6 @@ h4 {
   -o-transition: all .4s ease-in-out;
   -webkit-transition: all .4s ease-in-out;
   transition: all .4s ease-in-out;
-  margin-top: 5px;
-  margin-left: 180px;
-  margin-bottom: 5px;
   }
   
 .favButton:hover {
