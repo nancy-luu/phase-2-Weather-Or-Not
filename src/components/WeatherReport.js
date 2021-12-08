@@ -37,9 +37,6 @@ export default function WeatherReport ({ weather , handleClick }){
                 return "wi-day-fog";
         }
     }
-
-    // console.log(weather)
-    // console.log(weatherId)
     
     return (
         <>

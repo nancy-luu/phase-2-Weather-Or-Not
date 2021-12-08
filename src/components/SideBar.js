@@ -4,7 +4,7 @@ import WeatherReport from "./WeatherReport";
 import FavCities from "./FavCities";
 import { Container, Row, Col } from "react-bootstrap";
 
-export default function SideBar ({ weather, handleCity, setCity, lat, lng , handleClick}){
+export default function SideBar ({ weather, handleCity, setCity, lat, lng , handleClick, setFavCity}){
     return (
         <>
             <Container>
@@ -18,7 +18,7 @@ export default function SideBar ({ weather, handleCity, setCity, lat, lng , hand
                         className="search" />
                     </Col>
                     <Col>
-                        <FavCities className="favCities" />
+                        <FavCities className="favCities" setFavCity={setFavCity}/>
                     </Col>
                 </Row>
             </Container>

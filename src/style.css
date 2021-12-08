@@ -59,12 +59,24 @@ h4 {
   width: 100%;
 }
 
-.map {
+.mapContainer {
   position: relative;
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.349);
-  height: 100%;
   width: 50%;
+  border:white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+
+.googleMap{
+  display: flex;
+}
+
+.mapBox{
+  background-color: white;
+  width: 1000px;
 }
 
 
@@ -154,7 +166,6 @@ h4 {
 
 .favButton {
   position: absolute;
-  width: 100px;
   font-size: 16px;
   font-weight: 600;
   color: rgb(255, 255, 255);
@@ -167,6 +178,8 @@ h4 {
   -o-transition: all .4s ease-in-out;
   -webkit-transition: all .4s ease-in-out;
   transition: all .4s ease-in-out;
+  z-index: 100;
+
   }
   
 .favButton:hover {
@@ -195,6 +208,7 @@ h4 {
   position: absolute;
   top: 20px;
   left: 20px;
+  width: 100px;
   width: 80px;
   height: 60px;
   font-size: 40px;

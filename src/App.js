@@ -3,15 +3,17 @@ import MapStyles from './MapStyles';
 import Header from './components/Header';
 import SideBar from './components/SideBar';
 import "weather-icons/css/weather-icons.css";
-import { Container, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import {
     GoogleMap,
     useLoadScript,
     // Marker,
     // InfoWindow
 } from "@react-google-maps/api";
+import { findByLabelText } from '@testing-library/react';
 
 const mapContainerStyle = {
+    position: 'absolute',
     width: '80vh',
     height: '60vh',
 }
@@ -71,6 +73,13 @@ export default function App() {
         // console.log({setFavCity})
     }
     
+
+    useEffect(() => {
+        fetch(lanlngAPI)
+        .then((res) => res.json())
+        .then((weatherData) => setWeather(weatherData))
+    }, [lat])
+
     const center = {
         lat: lat,
         lng: lng,
@@ -89,7 +98,7 @@ export default function App() {
             <Header className="header" />
             <div className="video-background">
                 <div className="video-foreground">
-                    {/* <iframe src="https://www.youtube.com/embed/Y8ACyHYsb6Q?controls=0&showinfo=0&rel=0&autoplay=1&mute=1&loop=1&playlist=Y8ACyHYsb6Q" frameBorder="0" allowFullScreen allow="autoplay"></iframe> */}
+                    <iframe title="sky" src="https://www.youtube.com/embed/Y8ACyHYsb6Q?controls=0&showinfo=0&rel=0&autoplay=1&mute=1&loop=1&playlist=Y8ACyHYsb6Q" frameBorder="0" allowFullScreen allow="autoplay"></iframe>
                 </div>
                 <div className="video-layer"></div>
             </div>
@@ -106,8 +115,9 @@ export default function App() {
                             handleClick={handleClick}
                             className="main" />
                     </Col>
-                    <Col className="map">
+                    <Col className="mapContainer">
                         <GoogleMap
+                            id="map"
                             className="googleMap"
                             mapContainerStyle={mapContainerStyle}
                             zoom={zoom}
@@ -119,10 +129,10 @@ export default function App() {
                             }}>
                         </GoogleMap>
                         <button className="yourLocation" type="submit"
-                        onClick={(e) => {
-                            e.stopPropagation()
-                            curLocation()}}
-                         >📍</button>
+                            onClick={(e) => {
+                                e.stopPropagation()
+                                curLocation()}}
+                        >📍</button>
                     </Col>
                 </Row>
         </div>

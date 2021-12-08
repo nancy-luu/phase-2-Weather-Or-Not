@@ -4,8 +4,14 @@ export default function FavCities ( { setFavCity }){
     return (
         <>
             <select className="menu">
-                <option value="All">Your Cities</option>
-                <option value="city">{setFavCity}</option>
+                <option>Your Cities</option>
+                {/* {setFavCity.map((favCity) =>  
+                    <option 
+                        key={Math.random()} 
+                        favCityName={favCity.name} 
+                        //   handleRender={handleRender}
+                    />
+                )} */}
             </select>
         </>
     )
