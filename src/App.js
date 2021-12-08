@@ -27,34 +27,34 @@ const defaultWeather = {
     weather: [{ 0: { description: "", id: "" } },], wind: {speed: ""}
 }
 // const APIKEY = ("e3c1d63210fbee0969fa2f40280ef636")
-
+//const APIKEY2 = ("b070945df6f0539dd3a684e6bc1640b7")
 export default function App() {
     const [libraries] = useState(["places"])
-    const [lat, setLat] = useState(39.50)
     const [lng, setLng] = useState(-98.35)
+    const [lat, setLat] = useState(39.50)
+    
     const [yourLat, setYourLat] = useState("")
     const [yourLng, setYourLng] = useState("")
     const [city, setCity] = useState("")
     const [zoom, setZoom] = useState(4.3)
     const [weather, setWeather] = useState(defaultWeather)
-    const lanlngAPI = (`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=e3c1d63210fbee0969fa2f40280ef636`)
+    const [favCity, setFavCity] = useState({})
+    const lanlngAPI = (`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=b070945df6f0539dd3a684e6bc1640b7`)
 
-    
-    
+    useEffect(() => {
+        fetch(lanlngAPI)
+        .then((res) => res.json())
+        .then((weatherData) => setWeather(weatherData))
+        setZoom(11.5)
+    }, [lat,yourLat])
+
     useEffect(() => {
         navigator.geolocation.getCurrentPosition((postion) => {
             setLat(postion.coords.latitude)
             setLng(postion.coords.longitude)
             setYourLat(postion.coords.latitude)
             setYourLng(postion.coords.longitude)
-            setZoom(11)
         })}, [])
-
-        useEffect(() => {
-            fetch(lanlngAPI)
-            .then((res) => res.json())
-            .then((weatherData) => setWeather(weatherData))
-        }, [lat])
 
     function curLocation() {
             setLat(yourLat)
@@ -66,6 +66,11 @@ export default function App() {
         setLat(lat)
     }
 
+    function handleClick(event) {
+        setFavCity({weather})
+        // console.log({setFavCity})
+    }
+    
     const center = {
         lat: lat,
         lng: lng,
@@ -89,7 +94,7 @@ export default function App() {
                 <div className="video-layer"></div>
             </div>
                 <Row >
-                    <Col>
+                    <Col className="sideBar">
                         <SideBar
                             weather={weather}
                             lanlngAPI={lanlngAPI}
@@ -98,6 +103,7 @@ export default function App() {
                             city={city}
                             handleCity={handleCity}
                             setCity={setCity}
+                            handleClick={handleClick}
                             className="main" />
                     </Col>
                     <Col className="map">

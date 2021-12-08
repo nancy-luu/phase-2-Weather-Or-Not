@@ -1,11 +1,8 @@
 import React from "react";
-import { Container, 
-    // Row, Col 
-} from 'react-bootstrap' ;
+import { Container } from 'react-bootstrap' ;
+import FavCities from './FavCities';
 
-export default function WeatherReport ({ weather }){
-    console.log(weather)
-
+export default function WeatherReport ({ weather , handleClick }){
     function minmaxTemp(max, min){
         return(
             <p>
@@ -47,7 +44,7 @@ export default function WeatherReport ({ weather }){
     return (
         <>
             <Container className="report">
-                <h2>{weather.name}</h2>
+                <h2 className="cityName">{weather.name}</h2>
                 <h5 className="weatherIcon">
                     <i className={`wi ${getWeatherIcon(weatherId)} display-1`} />
                 </h5>
@@ -57,7 +54,11 @@ export default function WeatherReport ({ weather }){
                 <h4 className="detailTitle">Details:</h4>
                 <h4 className="detail">Wind Speed: {(weather.wind.speed)} mph</h4>
                 <h4 className="detail">Humidity: {(weather.main.humidity)}%</h4>
-                <button className="favButton" type="submit">Favorite</button>
+                <button 
+                    className="favButton" 
+                    type="submit"
+                    onClick={handleClick}
+                >Favorite</button>
             </Container>
         </>
     )
