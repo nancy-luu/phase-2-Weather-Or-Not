@@ -88,7 +88,6 @@ export default function App() {
                 </div>
                 <div className="video-layer"></div>
             </div>
-            <Container >
                 <Row >
                     <Col>
                         <SideBar
@@ -120,7 +119,6 @@ export default function App() {
                          >📍</button>
                     </Col>
                 </Row>
-            </Container>
         </div>
     )
 }
