@@ -3,8 +3,6 @@ import { Container } from 'react-bootstrap' ;
 import FavCities from './FavCities';
 
 export default function WeatherReport ({ weather , handleClick }){
-    console.log(weather)
-
     function minmaxTemp(max, min){
         return(
             <p>
