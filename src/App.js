@@ -35,8 +35,8 @@ export default function App() {
     const [lng, setLng] = useState(-98.35)
     const [lat, setLat] = useState(39.50)
     
-    const [yourLat, setYourLat] = useState("")
-    const [yourLng, setYourLng] = useState("")
+    const [yourLat, setYourLat] = useState(-98.35)
+    const [yourLng, setYourLng] = useState(39.50)
     const [city, setCity] = useState("")
     const [zoom, setZoom] = useState(4.3)
     const [weather, setWeather] = useState(defaultWeather)
@@ -47,16 +47,28 @@ export default function App() {
         fetch(lanlngAPI)
         .then((res) => res.json())
         .then((weatherData) => setWeather(weatherData))
-        setZoom(11.5)
-    }, [lat,yourLat])
+        console.log(weather)
+    }, [lat,yourLat,yourLng])
 
     useEffect(() => {
-        navigator.geolocation.getCurrentPosition((postion) => {
-            setLat(postion.coords.latitude)
-            setLng(postion.coords.longitude)
-            setYourLat(postion.coords.latitude)
-            setYourLng(postion.coords.longitude)
-        })}, [])
+        const successCallback = (position) =>{
+            setLat(position.coords.latitude)
+            setLng(position.coords.longitude)
+            setYourLat(position.coords.latitude)
+            setYourLng(position.coords.longitude)
+            setZoom(11.5)
+        }
+        const errorCallback = (error) => {
+            console.log(error)
+            setLat(39.50)
+            setLng(-98.35)
+            setYourLat(39.50)
+            setYourLng(-98.35)
+        }
+
+        navigator.geolocation.getCurrentPosition(successCallback, errorCallback) 
+           
+        }, [])
 
     function curLocation() {
             setLat(yourLat)
@@ -73,13 +85,6 @@ export default function App() {
         // console.log({setFavCity})
     }
     
-
-    useEffect(() => {
-        fetch(lanlngAPI)
-        .then((res) => res.json())
-        .then((weatherData) => setWeather(weatherData))
-    }, [lat])
-
     const center = {
         lat: lat,
         lng: lng,
@@ -98,7 +103,7 @@ export default function App() {
             <Header className="header" />
             <div className="video-background">
                 <div className="video-foreground">
-                    <iframe title="sky" src="https://www.youtube.com/embed/Y8ACyHYsb6Q?controls=0&showinfo=0&rel=0&autoplay=1&mute=1&loop=1&playlist=Y8ACyHYsb6Q" frameBorder="0" allowFullScreen allow="autoplay"></iframe>
+                    {/* <iframe title="sky" src="https://www.youtube.com/embed/Y8ACyHYsb6Q?controls=0&showinfo=0&rel=0&autoplay=1&mute=1&loop=1&playlist=Y8ACyHYsb6Q" frameBorder="0" allowFullScreen allow="autoplay"></iframe> */}
                 </div>
                 <div className="video-layer"></div>
             </div>
