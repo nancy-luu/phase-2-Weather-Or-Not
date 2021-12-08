@@ -17,7 +17,7 @@ export default function SideBar ({ weather, handleCity, setCity, lat, lng , hand
                         setCity={setCity}
                         className="search" />
                     </Col>
-                    <Col>
+                    <Col >
                         <FavCities className="favCities" setFavCity={setFavCity}/>
                     </Col>
                 </Row>

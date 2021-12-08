@@ -6,7 +6,7 @@ h1 {
 }
 
 h2 {
-  color: rgb(0, 0, 0);
+  color: rgb(33, 88, 151);
   text-align: center;
   font-size: 20em;
   font-family: 'Lato', sans-serif;
@@ -46,12 +46,11 @@ h4 {
   padding-bottom: 50px;
   background-color: rgba(255, 255, 255, 0.747);
   border-radius: 5px;
-  color: black;
+  color: rgb(33, 88, 151);
 }
 
 
 .menu {
-  border-color: rgb(255, 255, 255);
   background-color: rgba(255, 255, 255, 0.747);
   border-radius: 5px;
   border:none;
@@ -62,23 +61,20 @@ h4 {
 .mapContainer {
   position: relative;
   border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.349);
   width: 50%;
-  border:white;
-  padding-top: 5px;
   padding-bottom: 5px;
 }
 
-
-.googleMap{
+.box {
   display: flex;
+  background-color: rgba(255, 255, 255, 0.747);
+  border-radius: 5px;
+  height: 590px;
+  width: 920px;
+  padding-top: 8px;
+  padding-bottom: 70px;
+  padding-left: 20px;
 }
-
-.mapBox{
-  background-color: white;
-  width: 1000px;
-}
-
 
 .weatherIcon {
   text-align: center;
@@ -90,20 +86,19 @@ h4 {
   font-size: 3.5em;
 }
 
-
 .weatherDegree {
-  color: rgb(0, 0, 0);
+  color: rgb(33, 88, 151);
   text-align: center;
   font-size: 5em;
 }
 
 .weatherMaxMin {
-  color: black;
+  color: rgb(33, 88, 151);
   text-align: center;
 }
 
 .weatherDescription {
-  color: black;
+  color: rgb(33, 88, 151);
   text-align: center;
   font-size: 2em;
 }
@@ -165,12 +160,15 @@ h4 {
 /* BUTTON FORMATTING */
 
 .favButton {
+  display: block;
   position: absolute;
-  font-size: 16px;
+  justify-content: center;
+  font-size: 20px;
   font-weight: 600;
   color: rgb(255, 255, 255);
   cursor: pointer;
   height: 40px;
+  width: 100px;
   text-align:center;
   border: none;
   background-size: 300% 100%;
@@ -178,8 +176,10 @@ h4 {
   -o-transition: all .4s ease-in-out;
   -webkit-transition: all .4s ease-in-out;
   transition: all .4s ease-in-out;
-  z-index: 100;
-
+  top: 95%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   }
   
 .favButton:hover {
@@ -206,8 +206,8 @@ h4 {
 
 .yourLocation {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 25px;
+  left: 40px;
   width: 100px;
   width: 80px;
   height: 60px;

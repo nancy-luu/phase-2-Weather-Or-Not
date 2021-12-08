@@ -14,8 +14,9 @@ import { findByLabelText } from '@testing-library/react';
 
 const mapContainerStyle = {
     position: 'absolute',
-    width: '80vh',
-    height: '60vh',
+    display: 'inline-flex',
+    width: '90%',
+    height: '95%',
 }
 
 const options = {
@@ -70,6 +71,8 @@ export default function App() {
            
         }, [])
 
+    console.log({ weather })
+
     function curLocation() {
             setLat(yourLat)
             setLng(yourLng)
@@ -103,7 +106,7 @@ export default function App() {
             <Header className="header" />
             <div className="video-background">
                 <div className="video-foreground">
-                    {/* <iframe title="sky" src="https://www.youtube.com/embed/Y8ACyHYsb6Q?controls=0&showinfo=0&rel=0&autoplay=1&mute=1&loop=1&playlist=Y8ACyHYsb6Q" frameBorder="0" allowFullScreen allow="autoplay"></iframe> */}
+                    <iframe title="sky" src="https://www.youtube.com/embed/Y8ACyHYsb6Q?controls=0&showinfo=0&rel=0&autoplay=1&mute=1&loop=1&playlist=Y8ACyHYsb6Q" frameBorder="0" allowFullScreen allow="autoplay"></iframe>
                 </div>
                 <div className="video-layer"></div>
             </div>
@@ -121,6 +124,7 @@ export default function App() {
                             className="main" />
                     </Col>
                     <Col className="mapContainer">
+                        <form className="box">
                         <GoogleMap
                             id="map"
                             className="googleMap"
@@ -138,6 +142,7 @@ export default function App() {
                                 e.stopPropagation()
                                 curLocation()}}
                         >📍</button>
+                        </form>
                     </Col>
                 </Row>
         </div>
