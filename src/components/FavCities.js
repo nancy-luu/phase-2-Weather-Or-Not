@@ -2,19 +2,16 @@ import React from "react";
 import { DropdownButton } from "react-bootstrap";
 
 
-export default function FavCities ( { setFavCity }){
+export default function FavCities ( { favCity, handleSelect }){
+    // console.log(favCity);
 
     return (
         <>
             <select className="menu">
                 <option>Your Cities</option>
-                {/* {setFavCity.map((favCity) =>  
-                    <option 
-                        key={Math.random()} 
-                        favCityName={favCity.name} 
-                        //   handleRender={handleRender}
-                    />
-                )} */}
+                {favCity.map((c) =>  
+                    <option key={Math.random()} onChange={handleSelect}>{c}</option>
+                )}
             </select>
         </>
     )

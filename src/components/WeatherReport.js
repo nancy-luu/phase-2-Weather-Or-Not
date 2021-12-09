@@ -54,7 +54,7 @@ export default function WeatherReport ({ weather , handleSubmit }){
                 <button 
                     className="favButton" 
                     type="submit"
-                    onSubmit={handleSubmit}
+                    onClick={handleSubmit}
                 >Favorite</button>
             </Container>
         </>
