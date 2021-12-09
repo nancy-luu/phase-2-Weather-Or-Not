@@ -1,6 +1,9 @@
 import React from "react";
+import { DropdownButton } from "react-bootstrap";
+
 
 export default function FavCities ( { setFavCity }){
+
     return (
         <>
             <select className="menu">
@@ -16,3 +19,17 @@ export default function FavCities ( { setFavCity }){
         </>
     )
 }
+
+
+// let fetchObject = {
+//     method: 'POST',
+//     headers: 
+//     {
+//       "Content-Type": "application/json",
+//       'Accept': "application/json"
+//     },
+
+//     body: JSON.stringify({
+//       "name": setFavCity,
+//     })
+//   }

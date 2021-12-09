@@ -2,7 +2,7 @@ import React from "react";
 import { Container } from 'react-bootstrap' ;
 import FavCities from './FavCities';
 
-export default function WeatherReport ({ weather , handleClick }){
+export default function WeatherReport ({ weather , handleSubmit }){
     function minmaxTemp(max, min){
         return(
             <p>
@@ -54,7 +54,7 @@ export default function WeatherReport ({ weather , handleClick }){
                 <button 
                     className="favButton" 
                     type="submit"
-                    onClick={handleClick}
+                    onSubmit={handleSubmit}
                 >Favorite</button>
             </Container>
         </>

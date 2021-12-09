@@ -42,6 +42,7 @@ export default function App() {
     const [zoom, setZoom] = useState(4.3)
     const [weather, setWeather] = useState(defaultWeather)
     const [favCity, setFavCity] = useState({})
+
     const lanlngAPI = (`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=b070945df6f0539dd3a684e6bc1640b7`)
 
     useEffect(() => {
@@ -83,23 +84,25 @@ export default function App() {
         setLat(lat)
     }
 
-    function handleClick(event) {
-        setFavCity({weather})
-        // console.log({setFavCity})
-    }
-    
     const center = {
         lat: lat,
         lng: lng,
     }
-
+    
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: "AIzaSyC0cTA0LHGLFgzM3dg1MW0t07uNkrPr83g",
         libraries,
     })
-
+    
     if (loadError) return "Error Loading Map";
     if (!isLoaded) return "Loading Maps..";
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        let favCity = {favCity}
+        setFavCity({weather})
+        console.log("HELLO")
+    }
 
     return (
         <div>
@@ -121,7 +124,7 @@ export default function App() {
                             city={city}
                             handleCity={handleCity}
                             setCity={setCity}
-                            handleClick={handleClick}
+                            handleSubmit={handleSubmit}
                             className="main" />
                     </Col>
                     <Col className="mapContainer">
