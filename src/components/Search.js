@@ -13,7 +13,7 @@ import usePlacesAutocomplete, {
   } from "@reach/combobox";
   import "@reach/combobox/styles.css"
 
-  function Search({lat,lng, handleCity}) {
+  function Search({lat,lng, handleCity, setZoom}) {
     const {
         //is this ready to go?
       ready,
@@ -46,6 +46,7 @@ import usePlacesAutocomplete, {
                 //this pulls the lat, lng from getGeocode
                 const {lat, lng} = await getLatLng(results[0])
                 //sends infor back to handleCity
+                setZoom(11.5)
                 handleCity({lat,lng})
                 setValue("")
             }catch(error){
