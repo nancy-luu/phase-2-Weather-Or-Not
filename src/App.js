@@ -33,10 +33,10 @@ const defaultWeather = {
 //const APIKEY2 = ("b070945df6f0539dd3a684e6bc1640b7")
 export default function App() {
     const [libraries] = useState(["places"])
-    const [lng, setLng] = useState(-98.35)
+    const [lng, setLng] = useState(-97.35)
     const [lat, setLat] = useState(39.50)
     
-    const [yourLat, setYourLat] = useState(-98.35)
+    const [yourLat, setYourLat] = useState(-97.35)
     const [yourLng, setYourLng] = useState(39.50)
     const [city, setCity] = useState("")
     const [zoom, setZoom] = useState(4.3)
@@ -113,6 +113,7 @@ export default function App() {
                 <Row >
                     <Col className="sideBar">
                         <SideBar
+                        setZoom={setZoom}
                             weather={weather}
                             lanlngAPI={lanlngAPI}
                             lat={lat}

@@ -4,13 +4,14 @@ import WeatherReport from "./WeatherReport";
 import FavCities from "./FavCities";
 import { Container, Row, Col } from "react-bootstrap";
 
-export default function SideBar ({ weather, handleCity, setCity, lat, lng , handleClick, setFavCity}){
+export default function SideBar ({ setZoom, weather, handleCity, setCity, lat, lng , handleClick, setFavCity}){
     return (
         <>
             <Container>
                 <Row>
                     <Col>
                         <Search 
+                        setZoom={setZoom}
                         lat={lat}
                         lng={lng}
                         handleCity={handleCity}

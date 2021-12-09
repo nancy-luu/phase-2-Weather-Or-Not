@@ -4,6 +4,22 @@ h1 {
   font-size: 20em;
   font-family: 'Lato', sans-serif;
 }
+.header{
+  /* font-weight: bold; */
+background: linear-gradient(to right, rgb(253, 253, 253) 20%, #8ccbff 30%, #b4bfff 70%, rgb(255, 255, 255) 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  background-size: 200% auto;
+  animation: textShine 7s ease-in-out infinite alternate;
+}
+
+@keyframes textShine {
+  to {
+    background-position: 200%;
+  }
+}
 
 h2 {
   color: rgb(33, 88, 151);
@@ -21,6 +37,7 @@ h4 {
   margin-top: 20px;
   margin-bottom: 20px;
   font-size: 4em
+
 }
 
 .mainContainer {
@@ -61,8 +78,8 @@ h4 {
 .mapContainer {
   position: relative;
   border-radius: 5px;
-  width: 50%;
   padding-bottom: 5px;
+  margin-right: 20px
 }
 
 .box {
@@ -70,10 +87,11 @@ h4 {
   background-color: rgba(255, 255, 255, 0.747);
   border-radius: 5px;
   height: 590px;
-  width: 920px;
+  width: relative;
   padding-top: 8px;
   padding-bottom: 70px;
   padding-left: 20px;
+  margin-right: 20px;
 }
 
 .weatherIcon {
