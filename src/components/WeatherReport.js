@@ -1,6 +1,5 @@
 import React from "react";
 import { Container } from 'react-bootstrap' ;
-import FavCities from './FavCities';
 
 export default function WeatherReport ({ weather , handleSubmit }){
     function minmaxTemp(max, min){
@@ -11,7 +10,6 @@ export default function WeatherReport ({ weather , handleSubmit }){
             </p>
         )
     }
-console.log(weather)
     const weatherId = weather.weather[0].id
     const weatherDescription = weather.weather[0].description
 
