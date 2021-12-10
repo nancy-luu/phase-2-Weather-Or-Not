@@ -95,8 +95,8 @@ export default function App() {
     const handleSubmit = () => {
         const newFavCities = [...favCity, weather]
         setFavCity(newFavCities);
-    
     }
+    
     const mapFav = favCity.map((city) =>  
     <option city={city} onClick={console.log("clicked city")}key={Math.random()}>{city.name}</option>
 )
