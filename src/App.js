@@ -50,8 +50,9 @@ export default function App() {
         fetch(lanlngAPI)
         .then((res) => res.json())
         .then((weatherData) => setWeather(weatherData))
-        // console.log(weather)
-    }, [lat,yourLat,yourLng])
+        console.log(weather)
+    }, [lat,yourLat])
+
 
     useEffect(() => {
         const successCallback = (position) =>{
@@ -59,7 +60,7 @@ export default function App() {
             setLng(position.coords.longitude)
             setYourLat(position.coords.latitude)
             setYourLng(position.coords.longitude)
-            setZoom(11.5)
+            setZoom(12.75)
         }
         const errorCallback = (error) => {
             console.log(error)
@@ -68,17 +69,9 @@ export default function App() {
             setYourLat(39.50)
             setYourLng(-98.35)
         }
-
         navigator.geolocation.getCurrentPosition(successCallback, errorCallback) 
-           
         }, [])
-    
-    // useEffect(() => {
-    //     console.log(favCity)
-    // }, [favCity])
-
-    // console.log({ weather })
-
+ 
     function curLocation() {
             setLat(yourLat)
             setLng(yourLng)
@@ -87,6 +80,16 @@ export default function App() {
     function handleCity({ lat, lng }) {
         setLng(lng)
         setLat(lat)
+    }
+    function googleMapsClick(event){
+        setLat(event.latLng.lat())
+        setLng(event.latLng.lng())
+    }
+    
+
+
+    function handleClick(event) {
+        setFavCity({weather})
     }
 
     const center = {
@@ -149,10 +152,8 @@ export default function App() {
                             zoom={zoom}
                             center={center}
                             options={options}
-                            onClick={(event) => {
-                                setLat(event.latLng.lat())
-                                setLng(event.latLng.lng())
-                            }}>
+                            onClick={(event => googleMapsClick(event))}
+                            >
                         </GoogleMap>
                         <button className="yourLocation" type="submit"
                             onClick={(e) => {
