@@ -7,8 +7,6 @@ import { Row, Col } from 'react-bootstrap';
 import {
     GoogleMap,
     useLoadScript,
-    // Marker,
-    // InfoWindow
 } from "@react-google-maps/api";
 import { findByLabelText } from '@testing-library/react';
 
@@ -30,20 +28,14 @@ const defaultWeather = { name: "" ,
     weather: [{ 0: { description: "", id: "" } },], wind: {speed: ""}
 }
 
-// const APIKEY = ("e3c1d63210fbee0969fa2f40280ef636")
+//const APIKEY = ("e3c1d63210fbee0969fa2f40280ef636")
 //const APIKEY2 = ("b070945df6f0539dd3a684e6bc1640b7")
 export default function App() {
     const [libraries] = useState(["places"])
     const [lng, setLng] = useState(-97.35)
     const [lat, setLat] = useState(39.50)
-    
     const [yourLat, setYourLat] = useState(-97.35)
     const [yourLng, setYourLng] = useState(39.50)
-
-    // FavCity Test
-    const [favLat, setFavLat] = useState(-97.35)
-    const [favLng, setFavLng] = useState(39.50)
-
     const [city, setCity] = useState("")
     const [zoom, setZoom] = useState(4.3)
     const [weather, setWeather] = useState(defaultWeather)
@@ -56,8 +48,7 @@ export default function App() {
         fetch(lanlngAPI)
         .then((res) => res.json())
         .then((weatherData) => setWeather(weatherData))
-        // console.log(weather)
-    }, [lat,yourLat,yourLng,  favLat,favLng])
+    }, [lat,yourLat,yourLng])
 
     useEffect(() => {
         const successCallback = (position) =>{
@@ -65,12 +56,6 @@ export default function App() {
             setLng(position.coords.longitude)
             setYourLat(position.coords.latitude)
             setYourLng(position.coords.longitude)
-
-            // FavCity Test
-            setFavLat(position.coords.latitude)
-            setFavLng(position.coords.longitude)
-            
-
             setZoom(11.5)
         }
         const errorCallback = (error) => {
@@ -79,10 +64,6 @@ export default function App() {
             setLng(-98.35)
             setYourLat(39.50)
             setYourLng(-98.35)
-
-            // FavCity Test
-            setFavLat(39.50)
-            setFavLng(-98.35)
         }
         navigator.geolocation.getCurrentPosition(successCallback, errorCallback) 
         }, [])
@@ -91,7 +72,6 @@ export default function App() {
         setLat(yourLat)
         setLng(yourLng)
     }
-
     function handleCity({ lat, lng }) {
         setLng(lng)
         setLat(lat)
@@ -100,33 +80,31 @@ export default function App() {
         setLat(event.latLng.lat())
         setLng(event.latLng.lng())
     }
-
     const center = {
         lat: lat,
         lng: lng,
     }
-    
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: "AIzaSyC0cTA0LHGLFgzM3dg1MW0t07uNkrPr83g",
         libraries,
     })
-    
+
     if (loadError) return "Error Loading Map";
     if (!isLoaded) return "Loading Maps..";
-
-    
 
     const handleSubmit = () => {
         const newFavCities = [...favCity, weather]
         setFavCity(newFavCities);
+    
     }
-
-    function handleFavCity() {
-        setLng(favLat)
-        setLat(favLng)
-        // console.log(favCity)
+    const mapFav = favCity.map((city) =>  
+    <option city={city} onClick={console.log("clicked city")}key={Math.random()}>{city.name}</option>
+)
+    function changeCoord(event){
+        favCity.filter((city) => (city.name === event.target.value ? (setLat(city.coord.lat) , setLng(city.coord.lon)) : null)) 
     }
-
+    
+console.log(weather)
     return (
         <div>
             <Header className="header" />
@@ -144,14 +122,14 @@ export default function App() {
                             lanlngAPI={lanlngAPI}
                             lat={lat}
                             lng={lng}
-                            city={city}
+                            changeCoord={changeCoord}
                             handleCity={handleCity}
                             setCity={setCity}
                             handleSubmit={handleSubmit}
                             favCity={favCity}
                             setLng={setLng}
                             setLat={setLat}
-                            handleFavCity={handleFavCity}
+                            mapFav={mapFav}
                             className="main" 
                         />
                     </Col>
@@ -169,6 +147,7 @@ export default function App() {
                         </GoogleMap>
                         <button className="yourLocation" type="submit"
                             onClick={(e) => {
+                                e.preventDefault()
                                 e.stopPropagation()
                                 curLocation()}}
                         >📍</button>
