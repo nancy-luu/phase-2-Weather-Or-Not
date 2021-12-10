@@ -25,7 +25,7 @@ const options = {
     zoomControl: true,
 }
 
-const defaultWeather = {
+const defaultWeather = { name: "" ,
     main: { temp: "", humidity: "", temp_max: "", temp_min: "" },
     weather: [{ 0: { description: "", id: "" } },], wind: {speed: ""}
 }
@@ -41,7 +41,9 @@ export default function App() {
     const [city, setCity] = useState("")
     const [zoom, setZoom] = useState(4.3)
     const [weather, setWeather] = useState(defaultWeather)
-    const [favCity, setFavCity] = useState({})
+    const [favCity, setFavCity] = useState([])
+
+
     const lanlngAPI = (`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=b070945df6f0539dd3a684e6bc1640b7`)
 
     useEffect(() => {
@@ -50,6 +52,7 @@ export default function App() {
         .then((weatherData) => setWeather(weatherData))
         console.log(weather)
     }, [lat,yourLat])
+
 
     useEffect(() => {
         const successCallback = (position) =>{
@@ -68,7 +71,7 @@ export default function App() {
         }
         navigator.geolocation.getCurrentPosition(successCallback, errorCallback) 
         }, [])
-
+ 
     function curLocation() {
             setLat(yourLat)
             setLng(yourLng)
@@ -84,23 +87,37 @@ export default function App() {
     }
     
 
+
     function handleClick(event) {
         setFavCity({weather})
     }
-    
+
     const center = {
         lat: lat,
         lng: lng,
     }
-
+    
     const { isLoaded, loadError } = useLoadScript({
         googleMapsApiKey: "AIzaSyC0cTA0LHGLFgzM3dg1MW0t07uNkrPr83g",
         libraries,
     })
-
+    
     if (loadError) return "Error Loading Map";
     if (!isLoaded) return "Loading Maps..";
 
+    
+
+    const handleSubmit = () => {
+        const newFavCities = [...favCity, weather.name]
+        setFavCity(newFavCities);
+    }
+
+    
+    const handleSelect = () => {
+        console.log("HELLO")
+    }
+
+  
     return (
         <div>
             <Header className="header" />
@@ -121,7 +138,9 @@ export default function App() {
                             city={city}
                             handleCity={handleCity}
                             setCity={setCity}
-                            handleClick={handleClick}
+                            handleSubmit={handleSubmit}
+                            favCity={favCity}
+                            handleSelect={handleSelect}
                             className="main" />
                     </Col>
                     <Col className="mapContainer">
