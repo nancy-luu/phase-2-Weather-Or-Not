@@ -7,7 +7,7 @@ h1 {
 }
 .header{
   /* font-weight: bold; */
-background: linear-gradient(to right, rgb(253, 253, 253) 20%, #8ccbff 30%, #b4bfff 70%, rgb(255, 255, 255) 80%);
+  background: linear-gradient(to right, rgb(253, 253, 253) 20%, #8ccbff 30%, #b4bfff 70%, rgb(255, 255, 255) 80%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;

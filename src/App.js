@@ -29,6 +29,7 @@ const defaultWeather = { name: "" ,
     main: { temp: "", humidity: "", temp_max: "", temp_min: "" },
     weather: [{ 0: { description: "", id: "" } },], wind: {speed: ""}
 }
+
 // const APIKEY = ("e3c1d63210fbee0969fa2f40280ef636")
 //const APIKEY2 = ("b070945df6f0539dd3a684e6bc1640b7")
 export default function App() {
@@ -38,6 +39,11 @@ export default function App() {
     
     const [yourLat, setYourLat] = useState(-97.35)
     const [yourLng, setYourLng] = useState(39.50)
+
+    // FavCity Test
+    const [favLat, setFavLat] = useState(-97.35)
+    const [favLng, setFavLng] = useState(39.50)
+
     const [city, setCity] = useState("")
     const [zoom, setZoom] = useState(4.3)
     const [weather, setWeather] = useState(defaultWeather)
@@ -50,9 +56,8 @@ export default function App() {
         fetch(lanlngAPI)
         .then((res) => res.json())
         .then((weatherData) => setWeather(weatherData))
-        console.log(weather)
-    }, [lat,yourLat])
-
+        // console.log(weather)
+    }, [lat,yourLat,yourLng,  favLat,favLng])
 
     useEffect(() => {
         const successCallback = (position) =>{
@@ -60,7 +65,13 @@ export default function App() {
             setLng(position.coords.longitude)
             setYourLat(position.coords.latitude)
             setYourLng(position.coords.longitude)
-            setZoom(12.75)
+
+            // FavCity Test
+            setFavLat(position.coords.latitude)
+            setFavLng(position.coords.longitude)
+            
+
+            setZoom(11.5)
         }
         const errorCallback = (error) => {
             console.log(error)
@@ -68,13 +79,17 @@ export default function App() {
             setLng(-98.35)
             setYourLat(39.50)
             setYourLng(-98.35)
+
+            // FavCity Test
+            setFavLat(39.50)
+            setFavLng(-98.35)
         }
         navigator.geolocation.getCurrentPosition(successCallback, errorCallback) 
         }, [])
  
     function curLocation() {
-            setLat(yourLat)
-            setLng(yourLng)
+        setLat(yourLat)
+        setLng(yourLng)
     }
 
     function handleCity({ lat, lng }) {
@@ -84,12 +99,6 @@ export default function App() {
     function googleMapsClick(event){
         setLat(event.latLng.lat())
         setLng(event.latLng.lng())
-    }
-    
-
-
-    function handleClick(event) {
-        setFavCity({weather})
     }
 
     const center = {
@@ -108,16 +117,16 @@ export default function App() {
     
 
     const handleSubmit = () => {
-        const newFavCities = [...favCity, weather.name]
+        const newFavCities = [...favCity, weather]
         setFavCity(newFavCities);
     }
 
-    
-    const handleSelect = () => {
-        console.log("HELLO")
+    function handleFavCity() {
+        setLng(favLat)
+        setLat(favLng)
+        // console.log(favCity)
     }
 
-  
     return (
         <div>
             <Header className="header" />
@@ -140,8 +149,11 @@ export default function App() {
                             setCity={setCity}
                             handleSubmit={handleSubmit}
                             favCity={favCity}
-                            handleSelect={handleSelect}
-                            className="main" />
+                            setLng={setLng}
+                            setLat={setLat}
+                            handleFavCity={handleFavCity}
+                            className="main" 
+                        />
                     </Col>
                     <Col className="mapContainer">
                         <form className="box">
