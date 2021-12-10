@@ -11,7 +11,7 @@ export default function WeatherReport ({ weather , handleClick }){
             </p>
         )
     }
-
+console.log(weather)
     const weatherId = weather.weather[0].id
     const weatherDescription = weather.weather[0].description
 
@@ -28,7 +28,6 @@ export default function WeatherReport ({ weather , handleClick }){
                 return "wi-snow"; 
             case weatherId >= 701 && weatherId <=781:
                 return "wi-fog";  
-
             case weatherId === 800:
                 return "wi-day-sunny";
             case weatherId >= 800 && weatherId <=804:

@@ -49,7 +49,7 @@ export default function App() {
         .then((res) => res.json())
         .then((weatherData) => setWeather(weatherData))
         console.log(weather)
-    }, [lat,yourLat,yourLng])
+    }, [lat,yourLat])
 
     useEffect(() => {
         const successCallback = (position) =>{
@@ -57,7 +57,7 @@ export default function App() {
             setLng(position.coords.longitude)
             setYourLat(position.coords.latitude)
             setYourLng(position.coords.longitude)
-            setZoom(11.5)
+            setZoom(12.75)
         }
         const errorCallback = (error) => {
             console.log(error)
@@ -66,12 +66,8 @@ export default function App() {
             setYourLat(39.50)
             setYourLng(-98.35)
         }
-
         navigator.geolocation.getCurrentPosition(successCallback, errorCallback) 
-           
         }, [])
-
-    console.log({ weather })
 
     function curLocation() {
             setLat(yourLat)
@@ -82,10 +78,14 @@ export default function App() {
         setLng(lng)
         setLat(lat)
     }
+    function googleMapsClick(event){
+        setLat(event.latLng.lat())
+        setLng(event.latLng.lng())
+    }
+    
 
     function handleClick(event) {
         setFavCity({weather})
-        // console.log({setFavCity})
     }
     
     const center = {
@@ -133,10 +133,8 @@ export default function App() {
                             zoom={zoom}
                             center={center}
                             options={options}
-                            onClick={(event) => {
-                                setLat(event.latLng.lat())
-                                setLng(event.latLng.lng())
-                            }}>
+                            onClick={(event => googleMapsClick(event))}
+                            >
                         </GoogleMap>
                         <button className="yourLocation" type="submit"
                             onClick={(e) => {
